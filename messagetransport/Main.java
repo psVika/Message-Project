@@ -1,8 +1,8 @@
 /*
-Программа в которой Message Producer будет создавать и передавать некоторые сообщения в Message Broker.
-Message Broker будет просто складировать это сообщения, которые ему передал Message Producer.
-Message Consumer будет потреблять сообщения из Message Broker и удалять из него те сообщения, которые он уже принял.
-Максимальное количество сообщений, которое можно хранить в Message Broker равно 5.
+РџСЂРѕРіСЂР°РјРјР° РІ РєРѕС‚РѕСЂРѕР№ Message Producer Р±СѓРґРµС‚ СЃРѕР·РґР°РІР°С‚СЊ Рё РїРµСЂРµРґР°РІР°С‚СЊ РЅРµРєРѕС‚РѕСЂС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ РІ Message Broker.
+Message Broker Р±СѓРґРµС‚ СЃРєР»Р°РґРёСЂРѕРІР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёСЏ, РєРѕС‚РѕСЂС‹Рµ РµРјСѓ РїРµСЂРµРґР°Р» Message Producer.
+Message Consumer Р±СѓРґРµС‚ РїРѕС‚СЂРµР±Р»СЏС‚СЊ СЃРѕРѕР±С‰РµРЅРёСЏ РёР· Message Broker Рё СѓРґР°Р»СЏС‚СЊ РёР· РЅРµРіРѕ С‚Рµ СЃРѕРѕР±С‰РµРЅРёСЏ, РєРѕС‚РѕСЂС‹Рµ РѕРЅ СѓР¶Рµ РїСЂРёРЅСЏР».
+РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕРѕР±С‰РµРЅРёР№, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ С…СЂР°РЅРёС‚СЊСЃСЏ РІ Message Broker СЂР°РІРЅРѕ 5.
  */
 package by.messagetransport;
 
@@ -12,11 +12,11 @@ import by.messagetransport.producer.MessageProducingTask;
 
 public class Main {
     public static void main(String[] args) {
-        final int brokerMaxStoredMessages = 5; //брокер выводит максимум 5 сообщений
-        final MessageBroker messageBroker = new MessageBroker(brokerMaxStoredMessages); //определяем сам брокер
+        final int brokerMaxStoredMessages = 5; //Р±СЂРѕРєРµСЂ РІС‹РІРѕРґРёС‚ РјР°РєСЃРёРјСѓРј 5 СЃРѕРѕР±С‰РµРЅРёР№
+        final MessageBroker messageBroker = new MessageBroker(brokerMaxStoredMessages); //РѕРїСЂРµРґРµР»СЏРµРј СЃР°Рј Р±СЂРѕРєРµСЂ
 
-        final Thread producingThread = new Thread(new MessageProducingTask(messageBroker)); //поток, записывающий сообщения в брокер
-        final Thread consumingThread = new Thread(new MessageConsumingTask(messageBroker)); //поток потребляющий сообщения из брокера
+        final Thread producingThread = new Thread(new MessageProducingTask(messageBroker)); //РїРѕС‚РѕРє, Р·Р°РїРёСЃС‹РІР°СЋС‰РёР№ СЃРѕРѕР±С‰РµРЅРёСЏ РІ Р±СЂРѕРєРµСЂ
+        final Thread consumingThread = new Thread(new MessageConsumingTask(messageBroker)); //РїРѕС‚РѕРє РїРѕС‚СЂРµР±Р»СЏСЋС‰РёР№ СЃРѕРѕР±С‰РµРЅРёСЏ РёР· Р±СЂРѕРєРµСЂР°
 
 
         producingThread.start();
